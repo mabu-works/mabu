@@ -120,6 +120,46 @@ main {
 
 .section p { margin: 0 0 0.9rem; }
 
+/* ---------- お知らせ ---------- */
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.news-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  padding: 0.9rem 1.1rem;
+  box-shadow: var(--shadow);
+}
+
+.news-date {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 0.1rem 0.7rem;
+  margin-top: 0.15rem;
+  white-space: nowrap;
+}
+
+.news-body p { margin: 0; }
+.news-body a { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .news-item { flex-direction: column; gap: 0.35rem; }
+}
+
 /* ---------- サービスカード ---------- */
 .card-grid {
   display: grid;
