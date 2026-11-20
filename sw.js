@@ -1,5 +1,5 @@
 // まぶ個人サイト Service Worker: 同一オリジンGETをキャッシュ
-const CACHE_NAME = "mabu-v4";
+const CACHE_NAME = "mabu-v6";
 const CORE_ASSETS = [
   "./",
   "./index.html",

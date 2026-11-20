@@ -1,63 +1,149 @@
 :root {
-  --bg: #f6f6fb;
-  --surface: #ffffff;
-  --surface-border: #e3e3f0;
-  --text: #1d1d28;
-  --muted: #5b5b6e;
-  --accent: #4f46e5;
-  --accent-2: #9333ea;
-  --accent-soft: #eceafd;
-  --shadow: 0 6px 24px rgba(40, 36, 120, 0.10);
+  --bg: #0a0f1c;
+  --panel: #111a2c;
+  --panel-2: #182642;
+  --border: #263650;
+  --text: #ecf1f8;
+  --muted: #9db1c7;
+  --accent: #6a8dff;
+  --accent-2: #2dd4bf;
+  --ok: #34c759;
+  --accent-soft: rgba(106, 141, 255, 0.14);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --bar-bg: rgba(10, 15, 28, 0.82);
+  --tile-bg: rgba(10, 15, 28, 0.45);
+  color-scheme: dark;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #12121c;
-    --surface: #1d1d2c;
-    --surface-border: #34344a;
-    --text: #f0f0f7;
-    --muted: #a5a5ba;
-    --accent: #a5a0ff;
-    --accent-2: #d0a2ff;
-    --accent-soft: #2a2850;
-    --shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
-  }
+:root[data-theme="light"] {
+  --bg: #f3f5fa;
+  --panel: #ffffff;
+  --panel-2: #edf1f8;
+  --border: #d5dfec;
+  --text: #17263e;
+  --muted: #5b6f88;
+  --accent-soft: rgba(106, 141, 255, 0.10);
+  --shadow: 0 8px 24px rgba(30, 50, 90, 0.10);
+  --bar-bg: rgba(243, 245, 250, 0.88);
+  --tile-bg: rgba(255, 255, 255, 0.65);
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 
 body {
   margin: 0;
-  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans",
-    "Noto Sans CJK JP", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic",
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Noto Sans CJK JP", "Noto Sans JP", "Yu Gothic UI", "Yu Gothic",
     Meiryo, sans-serif;
-  background: var(--bg);
+  background:
+    radial-gradient(900px 480px at 85% -5%, rgba(45, 212, 191, 0.10) 0%, transparent 60%),
+    radial-gradient(1100px 620px at 10% -10%, rgba(106, 141, 255, 0.14) 0%, transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--text);
   line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- トップバー ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bar-bg);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-in {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 52px;
+}
+.brand {
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  font-size: 1.05rem;
+}
+.brand-en {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.topbar-links {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.topbar-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.topbar-links a:hover { color: var(--text); }
+.theme-toggle {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  width: 36px; height: 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--text);
+  line-height: 1;
+  flex: none;
+}
+.theme-toggle:hover { border-color: var(--accent); }
+@media (max-width: 640px) {
+  .topbar-links a { display: none; }
 }
 
 /* ---------- ヒーロー ---------- */
 .hero {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-  color: #fff;
-  text-align: center;
-  padding: 4.5rem 1.25rem 3.5rem;
+  max-width: 64rem;
+  margin: 1.25rem auto 0;
+  padding: 0 1.25rem;
 }
-
-.hero-inner { max-width: 44rem; margin: 0 auto; }
+.hero-inner {
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding: 3.25rem 1.5rem 2.75rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
 
 .hero-badge {
   display: inline-block;
-  font-size: 0.95rem;
-  letter-spacing: 0.35em;
+  font-size: 0.82rem;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 0.2rem 1.1rem 0.2rem 1.45rem;
+  padding: 0.2rem 1.1rem 0.2rem 1.42rem;
   margin-bottom: 1rem;
-  opacity: 0.95;
+  color: var(--accent-2);
+  background: var(--tile-bg);
+  font-weight: 700;
 }
 
 .hero-name {
@@ -65,16 +151,28 @@ body {
   line-height: 1.1;
   margin: 0 0 0.75rem;
   font-weight: 800;
+  letter-spacing: 0.02em;
+  background: linear-gradient(92deg, #ffffff 20%, #b9ccff 70%, #8ef0dd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+:root[data-theme="light"] .hero-name {
+  background: linear-gradient(92deg, #17263e 20%, #3355aa 70%, #0f766e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .hero-tagline {
   font-size: 1.15rem;
   margin: 0 0 0.35rem;
+  color: var(--text);
 }
 
 .hero-place {
   margin: 0 0 2rem;
-  opacity: 0.85;
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
@@ -86,17 +184,19 @@ body {
 }
 
 .hero-nav a {
-  color: #fff;
+  color: var(--text);
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--border);
+  background: var(--panel);
   border-radius: 999px;
   padding: 0.35rem 1.1rem;
   font-size: 0.95rem;
-  transition: background 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .hero-nav a:hover, .hero-nav a:focus-visible {
-  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--accent-2);
+  transform: translateY(-1px);
 }
 
 /* ---------- セクション ---------- */
@@ -109,16 +209,25 @@ main {
 .section { padding-top: 2.75rem; }
 
 .section-title {
-  font-size: 1.6rem;
+  position: relative;
+  font-size: 1.35rem;
   margin: 0 0 1rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 3px solid var(--accent);
-  display: inline-block;
+  padding-left: 14px;
+  line-height: 1.4;
+}
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.18em; bottom: 0.18em;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
 }
 
 .section-lead { color: var(--muted); margin-top: 0; }
 
 .section p { margin: 0 0 0.9rem; }
+.section a { color: var(--accent); }
 
 /* ---------- お知らせ ---------- */
 .news-list {
@@ -134,10 +243,10 @@ main {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  background: var(--surface);
-  border: 1px solid var(--surface-border);
-  border-radius: 14px;
-  padding: 0.9rem 1.1rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 0.95rem 1.15rem;
   box-shadow: var(--shadow);
 }
 
@@ -147,6 +256,7 @@ main {
   font-weight: 700;
   color: var(--accent);
   background: var(--accent-soft);
+  border: 1px solid var(--border);
   border-radius: 999px;
   padding: 0.1rem 0.7rem;
   margin-top: 0.15rem;
@@ -166,14 +276,16 @@ main {
 .service-search {
   width: 100%;
   box-sizing: border-box;
-  padding: 0.7rem 1rem;
+  padding: 0.75rem 1.1rem;
   font-size: 1rem;
   color: var(--text);
-  background: var(--surface);
-  border: 1px solid var(--surface-border);
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 999px;
   box-shadow: var(--shadow);
 }
+
+.service-search::placeholder { color: var(--muted); }
 
 .service-search:focus-visible {
   outline: 2px solid var(--accent);
@@ -188,29 +300,33 @@ main {
 }
 
 .chip {
-  padding: 0.35rem 0.95rem;
+  padding: 0.4rem 0.95rem;
   font-size: 0.9rem;
   color: var(--muted);
-  background: var(--surface);
-  border: 1px solid var(--surface-border);
+  background: var(--panel);
+  border: 1px solid var(--border);
   border-radius: 999px;
   cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
-.chip:hover { border-color: var(--accent); }
+.chip:hover { border-color: var(--accent-2); transform: translateY(-1px); }
 
 .chip.is-active {
-  color: var(--accent);
-  background: var(--accent-soft);
-  border-color: var(--accent);
+  color: #fff;
+  /* 白文字で読めるよう、塗りボタン専用に濃いめのグラデーションを使う（両端ともコントラスト比5以上） */
+  background: linear-gradient(90deg, #4a5fd9, #0e7c6f);
+  border-color: transparent;
   font-weight: 700;
 }
+:root[data-theme="light"] .chip.is-active { color: #fff; }
 
 .service-cat {
-  font-size: 1.15rem;
+  font-size: 1.08rem;
   margin: 1.9rem 0 0;
-  padding-left: 0.6rem;
+  padding-left: 0.7rem;
   border-left: 4px solid var(--accent);
+  color: var(--text);
 }
 
 .service-cat + .card-grid { margin-top: 0.9rem; }
@@ -225,9 +341,9 @@ main {
 
 .card {
   display: block;
-  background: var(--surface);
-  border: 1px solid var(--surface-border);
-  border-radius: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
   padding: 1.1rem 1.2rem;
   text-decoration: none;
   color: var(--text);
@@ -237,13 +353,13 @@ main {
 
 .card:hover, .card:focus-visible {
   transform: translateY(-3px);
-  border-color: var(--accent);
+  border-color: var(--accent-2);
 }
 
 .card h3 {
   margin: 0 0 0.4rem;
   font-size: 1.08rem;
-  color: var(--accent);
+  color: var(--text);
 }
 
 .card p {
@@ -254,15 +370,17 @@ main {
 
 .card-url {
   font-size: 0.8rem;
-  color: var(--muted);
+  color: var(--accent);
   word-break: break-all;
 }
 
 /* ---------- 特集ボックス・ボタン ---------- */
 .feature-box {
-  background: var(--accent-soft);
-  border-radius: 1rem;
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--border);
+  border-radius: 18px;
   padding: 1.5rem 1.5rem 1.25rem;
+  box-shadow: var(--shadow);
 }
 
 .feature-box h3 { margin: 0 0 0.5rem; font-size: 1.3rem; }
@@ -276,25 +394,31 @@ main {
 
 .button {
   display: inline-block;
-  background: var(--accent);
+  /* 白文字で読めるよう、塗りボタン専用に濃いめのグラデーションを使う（両端ともコントラスト比5以上） */
+  background: linear-gradient(90deg, #4a5fd9, #0e7c6f);
   color: #fff;
   text-decoration: none;
+  border: 1px solid transparent;
   border-radius: 999px;
   padding: 0.5rem 1.3rem;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 700;
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
+.button:hover { transform: translateY(-1px); opacity: 0.95; }
 
 .button-sub {
-  background: var(--surface);
+  background: var(--panel);
   color: var(--accent);
-  border: 1px solid var(--accent);
+  border: 1px solid var(--border);
 }
+.button-sub:hover { border-color: var(--accent); }
 
-@media (prefers-color-scheme: dark) {
-  .button { color: #17142e; }
-  .button-sub { color: var(--accent); }
-}
+/* .section a のリンク色よりボタン文字色を優先させる（塗りボタンの白文字がリンク色に負けて読めなくなるのを防ぐ） */
+.section a.button { color: #fff; }
+.section a.button-sub { color: var(--accent); }
+/* ライトテーマでは副ボタンの文字を濃い青にする（白背景でコントラスト比5以上） */
+:root[data-theme="light"] .section a.button-sub { color: #3d5bd6; }
 
 /* ---------- リンク集 ---------- */
 .link-list {
@@ -310,19 +434,25 @@ main {
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
-  background: var(--surface);
-  border: 1px solid var(--surface-border);
-  border-radius: 0.75rem;
-  padding: 0.8rem 1.1rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
   text-decoration: none;
   color: var(--text);
-  transition: border-color 0.15s ease;
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
-.link-list a:hover, .link-list a:focus-visible { border-color: var(--accent); }
+.link-list a:hover, .link-list a:focus-visible { border-color: var(--accent-2); transform: translateY(-1px); }
 
-.link-label { font-weight: 600; color: var(--accent); }
+.link-label { font-weight: 600; color: var(--text); }
 .link-value { color: var(--muted); font-size: 0.9rem; word-break: break-all; text-align: right; }
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
 /* ---------- フッター ---------- */
 .footer {
@@ -330,14 +460,25 @@ main {
   color: var(--muted);
   padding: 1.5rem 1rem 2.5rem;
   font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  max-width: 64rem;
+  margin: 0 auto;
 }
 
 /* ---------- スマホ調整 ---------- */
 @media (max-width: 30rem) {
-  .hero { padding: 3.25rem 1rem 2.75rem; }
+  .hero { padding: 0 0.75rem; margin-top: 0.85rem; }
+  .hero-inner { padding: 2.5rem 1rem 2.1rem; border-radius: 16px; }
   .hero-name { font-size: 3rem; }
   .hero-tagline { font-size: 1.02rem; }
   .card-grid { grid-template-columns: 1fr; }
   .link-list a { flex-direction: column; gap: 0.1rem; }
   .link-value { text-align: left; }
+  main { padding: 0 0.85rem 2.5rem; }
+  .topbar-in { padding: 0 0.85rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card, .chip, .button, .link-list a, .hero-nav a { transition: none; }
 }
