@@ -160,6 +160,61 @@ main {
   .news-item { flex-direction: column; gap: 0.35rem; }
 }
 
+/* ---------- サービスの検索・絞り込み ---------- */
+.service-tools { margin-top: 1.25rem; }
+
+.service-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+
+.service-search:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.chip {
+  padding: 0.35rem 0.95rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.chip:hover { border-color: var(--accent); }
+
+.chip.is-active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+.service-cat {
+  font-size: 1.15rem;
+  margin: 1.9rem 0 0;
+  padding-left: 0.6rem;
+  border-left: 4px solid var(--accent);
+}
+
+.service-cat + .card-grid { margin-top: 0.9rem; }
+
 /* ---------- サービスカード ---------- */
 .card-grid {
   display: grid;

@@ -45,98 +45,119 @@
   <section id="services" class="section">
     <h2 class="section-title">Webサービス</h2>
     <p class="section-lead">個人開発した Web サービスの一覧です。すべてブラウザだけで動きます（インストール・登録不要）。</p>
-    <div class="card-grid">
-      <a class="card" href="https://bosai.vercel.app/" target="_blank" rel="noopener">
+    <div class="service-tools">
+      <input type="search" id="serviceSearch" class="service-search" placeholder="サービス名やキーワードで検索" aria-label="Webサービスを検索">
+      <div class="chip-row" role="group" aria-label="カテゴリで絞り込み">
+        <button type="button" class="chip is-active" data-filter="all">すべて</button>
+        <button type="button" class="chip" data-filter="kurashi">くらし・実用</button>
+        <button type="button" class="chip" data-filter="gazou">画像・投稿づくり</button>
+        <button type="button" class="chip" data-filter="uranai">占い・診断</button>
+        <button type="button" class="chip" data-filter="asobi">抽選・ゲーム・遊び</button>
+      </div>
+    </div>
+    <h3 class="service-cat" data-cat-group="kurashi">くらし・実用</h3>
+    <div class="card-grid" data-cat-grid="kurashi">
+      <a class="card" data-cat="kurashi" href="https://bosai.vercel.app/" target="_blank" rel="noopener">
         <h3>防災情報Web</h3>
         <p>地震・天気をひと目で確認できる防災情報サイト。</p>
         <span class="card-url">bosai.vercel.app</span>
       </a>
-      <a class="card" href="https://miaq.vercel.app/" target="_blank" rel="noopener">
-        <h3>Quote画像メーカー</h3>
-        <p>発言を引用風の画像にできるメーカー。</p>
-        <span class="card-url">miaq.vercel.app</span>
-      </a>
-      <a class="card" href="https://wadaiya.vercel.app/" target="_blank" rel="noopener">
-        <h3>話題ガチャ</h3>
-        <p>会話のネタに困ったときの話題ガチャ。</p>
-        <span class="card-url">wadaiya.vercel.app</span>
-      </a>
-      <a class="card" href="https://densha.vercel.app/info/" target="_blank" rel="noopener">
+      <a class="card" data-cat="kurashi" href="https://densha.vercel.app/info/" target="_blank" rel="noopener">
         <h3>電車の運行情報ページ</h3>
         <p>高崎線など3路線の運行情報をまとめたページ。</p>
         <span class="card-url">densha.vercel.app/info/</span>
       </a>
-      <a class="card" href="https://nisetsui.vercel.app/" target="_blank" rel="noopener">
-        <h3>Fake Tweetメーカー</h3>
-        <p>X風の投稿カード画像を作れるメーカー。</p>
-        <span class="card-url">nisetsui.vercel.app</span>
-      </a>
-      <a class="card" href="https://sabasute.vercel.app/" target="_blank" rel="noopener">
+      <a class="card" data-cat="kurashi" href="https://sabasute.vercel.app/" target="_blank" rel="noopener">
         <h3>サーバーステータス</h3>
         <p>運用中の Bot サーバーの稼働状況を公開するページ。</p>
         <span class="card-url">sabasute.vercel.app</span>
       </a>
-      <a class="card" href="https://amidaya.vercel.app/" target="_blank" rel="noopener">
-        <h3>あみだくじメーカー</h3>
-        <p>参加者と結果を入れるだけであみだくじを自動生成。</p>
-        <span class="card-url">amidaya.vercel.app</span>
-      </a>
-      <a class="card" href="https://ruletto.vercel.app/" target="_blank" rel="noopener">
-        <h3>ルーレットメーカー</h3>
-        <p>項目を入れて回せる汎用ルーレット。設定の共有も可能。</p>
-        <span class="card-url">ruletto.vercel.app</span>
-      </a>
-      <a class="card" href="https://otoya.vercel.app/" target="_blank" rel="noopener">
+      <a class="card" data-cat="kurashi" href="https://otoya.vercel.app/" target="_blank" rel="noopener">
         <h3>環境音ミキサー</h3>
         <p>雨・電車・カフェなどの音を合成して重ね掛けできる作業用BGM。</p>
         <span class="card-url">otoya.vercel.app</span>
       </a>
-      <a class="card" href="https://shindanya.vercel.app/" target="_blank" rel="noopener">
-        <h3>診断メーカー</h3>
-        <p>名前を入れて楽しむ診断。結果はカード画像で共有可能。</p>
-        <span class="card-url">shindanya.vercel.app</span>
-      </a>
-      <a class="card" href="https://mikuji.vercel.app/" target="_blank" rel="noopener">
-        <h3>おみくじ・今日の運勢</h3>
-        <p>日替わりの運勢とラッキーアイテム。連続訪問の記録つき。</p>
-        <span class="card-url">mikuji.vercel.app</span>
-      </a>
-      <a class="card" href="https://taipingu.vercel.app/" target="_blank" rel="noopener">
+      <a class="card" data-cat="kurashi" href="https://taipingu.vercel.app/" target="_blank" rel="noopener">
         <h3>タイピング練習</h3>
         <p>ローマ字入力の速度と正確さを測るタイピングゲーム。</p>
         <span class="card-url">taipingu.vercel.app</span>
       </a>
-      <a class="card" href="https://nazoya.vercel.app/" target="_blank" rel="noopener">
-        <h3>暗号・謎解きメーカー</h3>
-        <p>暗号化ツールと、謎解き問題カードの作成。</p>
-        <span class="card-url">nazoya.vercel.app</span>
-      </a>
-      <a class="card" href="https://kakupro.vercel.app/" target="_blank" rel="noopener">
-        <h3>架空プロフィール生成器</h3>
-        <p>ランダム生成したプロフィールをカード画像に。</p>
-        <span class="card-url">kakupro.vercel.app</span>
-      </a>
-      <a class="card" href="https://chibigame.vercel.app/" target="_blank" rel="noopener">
-        <h3>ミニゲーム集</h3>
-        <p>反射神経・色違い当て・数字記憶の3本セット。</p>
-        <span class="card-url">chibigame.vercel.app</span>
-      </a>
-      <a class="card" href="https://shuchuya.vercel.app/" target="_blank" rel="noopener">
+      <a class="card" data-cat="kurashi" href="https://shuchuya.vercel.app/" target="_blank" rel="noopener">
         <h3>集中タイマー</h3>
         <p>ポモドーロタイマーと集中時間の記録。</p>
         <span class="card-url">shuchuya.vercel.app</span>
       </a>
-      <a class="card" href="https://dokukaki.vercel.app/" target="_blank" rel="noopener">
+    </div>
+    <h3 class="service-cat" data-cat-group="gazou">画像・投稿づくり</h3>
+    <div class="card-grid" data-cat-grid="gazou">
+      <a class="card" data-cat="gazou" href="https://miaq.vercel.app/" target="_blank" rel="noopener">
+        <h3>Quote画像メーカー</h3>
+        <p>発言を引用風の画像にできるメーカー。</p>
+        <span class="card-url">miaq.vercel.app</span>
+      </a>
+      <a class="card" data-cat="gazou" href="https://nisetsui.vercel.app/" target="_blank" rel="noopener">
+        <h3>Fake Tweetメーカー</h3>
+        <p>X風の投稿カード画像を作れるメーカー。</p>
+        <span class="card-url">nisetsui.vercel.app</span>
+      </a>
+      <a class="card" data-cat="gazou" href="https://kakupro.vercel.app/" target="_blank" rel="noopener">
+        <h3>架空プロフィール生成器</h3>
+        <p>ランダム生成したプロフィールをカード画像に。</p>
+        <span class="card-url">kakupro.vercel.app</span>
+      </a>
+      <a class="card" data-cat="gazou" href="https://dokukaki.vercel.app/" target="_blank" rel="noopener">
         <h3>ドキュメント書き込み</h3>
         <p>PDFや画像の上にペンや文字で書き込めるツール。</p>
         <span class="card-url">dokukaki.vercel.app</span>
       </a>
-      <a class="card" href="https://kujiya.vercel.app/" target="_blank" rel="noopener">
+    </div>
+    <h3 class="service-cat" data-cat-group="uranai">占い・診断</h3>
+    <div class="card-grid" data-cat-grid="uranai">
+      <a class="card" data-cat="uranai" href="https://shindanya.vercel.app/" target="_blank" rel="noopener">
+        <h3>診断メーカー</h3>
+        <p>名前を入れて楽しむ診断。結果はカード画像で共有可能。</p>
+        <span class="card-url">shindanya.vercel.app</span>
+      </a>
+      <a class="card" data-cat="uranai" href="https://mikuji.vercel.app/" target="_blank" rel="noopener">
+        <h3>おみくじ・今日の運勢</h3>
+        <p>日替わりの運勢とラッキーアイテム。連続訪問の記録つき。</p>
+        <span class="card-url">mikuji.vercel.app</span>
+      </a>
+    </div>
+    <h3 class="service-cat" data-cat-group="asobi">抽選・ゲーム・遊び</h3>
+    <div class="card-grid" data-cat-grid="asobi">
+      <a class="card" data-cat="asobi" href="https://wadaiya.vercel.app/" target="_blank" rel="noopener">
+        <h3>話題ガチャ</h3>
+        <p>会話のネタに困ったときの話題ガチャ。</p>
+        <span class="card-url">wadaiya.vercel.app</span>
+      </a>
+      <a class="card" data-cat="asobi" href="https://amidaya.vercel.app/" target="_blank" rel="noopener">
+        <h3>あみだくじメーカー</h3>
+        <p>参加者と結果を入れるだけであみだくじを自動生成。</p>
+        <span class="card-url">amidaya.vercel.app</span>
+      </a>
+      <a class="card" data-cat="asobi" href="https://ruletto.vercel.app/" target="_blank" rel="noopener">
+        <h3>ルーレットメーカー</h3>
+        <p>項目を入れて回せる汎用ルーレット。設定の共有も可能。</p>
+        <span class="card-url">ruletto.vercel.app</span>
+      </a>
+      <a class="card" data-cat="asobi" href="https://nazoya.vercel.app/" target="_blank" rel="noopener">
+        <h3>暗号・謎解きメーカー</h3>
+        <p>暗号化ツールと、謎解き問題カードの作成。</p>
+        <span class="card-url">nazoya.vercel.app</span>
+      </a>
+      <a class="card" data-cat="asobi" href="https://chibigame.vercel.app/" target="_blank" rel="noopener">
+        <h3>ミニゲーム集</h3>
+        <p>反射神経・色違い当て・数字記憶の3本セット。</p>
+        <span class="card-url">chibigame.vercel.app</span>
+      </a>
+      <a class="card" data-cat="asobi" href="https://kujiya.vercel.app/" target="_blank" rel="noopener">
         <h3>抽選ツール</h3>
         <p>参加者リストから複数人をまとめて抽選できるツール。</p>
         <span class="card-url">kujiya.vercel.app</span>
       </a>
     </div>
+    <p id="serviceEmpty" class="section-lead" hidden>条件に合うサービスが見つかりませんでした。</p>
   </section>
 
   <section id="community" class="section">

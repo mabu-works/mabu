@@ -52,6 +52,48 @@
       });
   }
 
+  // Webサービスの検索・カテゴリ絞り込み
+  var serviceSearch = document.getElementById("serviceSearch");
+  var serviceEmpty = document.getElementById("serviceEmpty");
+  var chips = document.querySelectorAll(".chip[data-filter]");
+  var cards = document.querySelectorAll(".card[data-cat]");
+  if (serviceSearch && chips.length && cards.length) {
+    var activeFilter = "all";
+    var applyServiceFilter = function () {
+      var query = serviceSearch.value.trim().toLowerCase();
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var matchesCat = activeFilter === "all" || card.getAttribute("data-cat") === activeFilter;
+        var matchesQuery = !query || card.textContent.toLowerCase().indexOf(query) !== -1;
+        var show = matchesCat && matchesQuery;
+        card.style.display = show ? "" : "none";
+        if (show) visibleCount++;
+      });
+      document.querySelectorAll("[data-cat-group]").forEach(function (heading) {
+        var key = heading.getAttribute("data-cat-group");
+        var grid = document.querySelector('[data-cat-grid="' + key + '"]');
+        var anyVisible = false;
+        if (grid) {
+          grid.querySelectorAll(".card").forEach(function (card) {
+            if (card.style.display !== "none") anyVisible = true;
+          });
+          grid.style.display = anyVisible ? "" : "none";
+        }
+        heading.style.display = anyVisible ? "" : "none";
+      });
+      if (serviceEmpty) serviceEmpty.hidden = visibleCount !== 0;
+    };
+    serviceSearch.addEventListener("input", applyServiceFilter);
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        chips.forEach(function (c) { c.classList.remove("is-active"); });
+        chip.classList.add("is-active");
+        activeFilter = chip.getAttribute("data-filter");
+        applyServiceFilter();
+      });
+    });
+  }
+
   // フッターの年表示を現在の年に合わせる
   var yearEl = document.getElementById("year");
   if (yearEl) {
